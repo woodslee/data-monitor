@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-
+from pydantic import BaseModel
+from typing import Optional
 tokens = {
     'admin': {
         'token': 'admin-token'
@@ -24,16 +25,21 @@ users = {
     }
 }
 
+
+class User(BaseModel):
+    username: Optional[str]
+
+
 app = FastAPI()
 
 
 @app.post('/vue-admin-template/user/login')
-def login(req):
-    token = req.get('username')
-    if token and tokens.get(token):
+def login(user: User):
+    username = user.username
+    if username and tokens.get(username):
         return {
             'code': 20000,
-            'data': tokens.get(token)
+            'data': tokens.get(username)
         }
     return {
         'code': 60204,
@@ -41,8 +47,8 @@ def login(req):
     }
 
 
-@app.get('/vue-admin-template/user/info/{token}')
-def info(token):
+@app.get('/vue-admin-template/user/info')
+def info(token: str):
     user = users.get(token)
     if user:
         return {
@@ -56,8 +62,7 @@ def info(token):
 
 
 @app.post('/vue-admin-template/user/logout')
-def logout(req):
-    print('logout,request:%s' % req)
+def logout(user: Optional[User] = None):
     return {
         'code': 20000,
         'data': 'success'

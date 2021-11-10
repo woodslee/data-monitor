@@ -1,3 +1,15 @@
 @host=http://localhost:8080
 
-GET {{host}}/vue-admin-template/user/info/admin-token
+POST {{host}}/vue-admin-template/user/login
+content-type: application/json
+
+{
+    "username":"admin"
+}
+###
+POST {{host}}/vue-admin-template/user/logout
+content-type: application/json
+
+{
+    "username":"admin"
+}
