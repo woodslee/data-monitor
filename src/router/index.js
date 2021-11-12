@@ -32,6 +32,50 @@ import Layout from '@/layout'
  */
 export const constantRoutes = [
   {
+    path: '/job',
+    component: Layout,
+    children: [
+      {
+        path: 'jobs',
+        name: 'Flink任务',
+        component: () => import('@/views/table/index'),
+        meta: { title: 'Flink任务', icon: 'el-icon-camera' }
+      }
+    ]
+  },
+  {
+    path: '/tbox',
+    component: Layout,
+    name: 'Tbox数据',
+    meta: { title: 'Tbox数据', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'qb',
+        name: '企标',
+        component: () => import('@/views/table/index'),
+        meta: { title: '企标', icon: 'el-icon-cpu' }
+      },
+      {
+        path: 'gb',
+        name: '国标',
+        component: () => import('@/views/table/index'),
+        meta: { title: '企标', icon: 'el-icon-cpu' }
+      },
+      {
+        path: 'misc',
+        name: 'MISC',
+        component: () => import('@/views/table/index'),
+        meta: { title: 'MISC', icon: 'el-icon-cpu' }
+      },
+      {
+        path: 'heartbeat',
+        name: '心跳',
+        component: () => import('@/views/table/index'),
+        meta: { title: '心跳', icon: 'el-icon-cpu' }
+      }
+    ]
+  },
+  {
     path: '/login',
     component: () => import('@/views/login/index'),
     hidden: true

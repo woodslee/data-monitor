@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Optional
+import requests
+import json
 tokens = {
     'admin': {
         'token': 'admin-token'
@@ -31,6 +33,12 @@ class User(BaseModel):
 
 
 app = FastAPI()
+
+def http_get(req_url: str):
+    response = requests.get(req_url)
+    if response.status_code==200:
+        return response.json()
+    return  json.loads('{}')
 
 
 @app.post('/vue-admin-template/user/login')
@@ -67,3 +75,7 @@ def logout(user: Optional[User] = None):
         'code': 20000,
         'data': 'success'
     }
+
+@app.get('/vue-admin-template/flink/job/list')
+def job_list():
+    return http_get('http://192.168.3.221:8088/ws/v1/cluster/apps?state=RUNNING')
