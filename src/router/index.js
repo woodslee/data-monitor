@@ -38,8 +38,20 @@ export const constantRoutes = [
       {
         path: 'jobs',
         name: 'Flink任务',
-        component: () => import('@/views/table/index'),
+        component: () => import('@/views/jobs/index'),
         meta: { title: 'Flink任务', icon: 'el-icon-camera' }
+      }
+    ]
+  },
+  {
+    path: '/kafka',
+    component: Layout,
+    children: [
+      {
+        path: 'kafka',
+        name: 'Kafka',
+        component: () => import('@/views/jobs/index'),
+        meta: { title: 'Kafka详情', icon: 'el-icon-camera' }
       }
     ]
   },
