@@ -64,14 +64,14 @@ export const constantRoutes = [
       {
         path: 'qb',
         name: '企标',
-        component: () => import('@/views/table/index'),
-        meta: { title: '企标', icon: 'el-icon-cpu' }
+        component: () => import('@/views/kafka/index'),
+        meta: { title: '企标1', icon: 'el-icon-cpu' }
       },
       {
         path: 'gb',
         name: '国标',
         component: () => import('@/views/table/index'),
-        meta: { title: '企标', icon: 'el-icon-cpu' }
+        meta: { title: '国标', icon: 'el-icon-cpu' }
       },
       {
         path: 'misc',

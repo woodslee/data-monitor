@@ -6,3 +6,11 @@ export function flink_jobs(params) {
     params
   })
 }
+
+export function get_kafka_data(params) {
+  return request({
+    url: '/vue-admin-template/kafka/list_data',
+    method: 'POST',
+    params
+  })
+}
