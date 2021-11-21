@@ -50,40 +50,8 @@ export const constantRoutes = [
       {
         path: 'kafka',
         name: 'Kafka',
-        component: () => import('@/views/jobs/index'),
-        meta: { title: 'Kafka详情', icon: 'el-icon-camera' }
-      }
-    ]
-  },
-  {
-    path: '/tbox',
-    component: Layout,
-    name: 'Tbox数据',
-    meta: { title: 'Tbox数据', icon: 'el-icon-s-help' },
-    children: [
-      {
-        path: 'qb',
-        name: '企标',
         component: () => import('@/views/kafka/index'),
-        meta: { title: '企标1', icon: 'el-icon-cpu' }
-      },
-      {
-        path: 'gb',
-        name: '国标',
-        component: () => import('@/views/table/index'),
-        meta: { title: '国标', icon: 'el-icon-cpu' }
-      },
-      {
-        path: 'misc',
-        name: 'MISC',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'MISC', icon: 'el-icon-cpu' }
-      },
-      {
-        path: 'heartbeat',
-        name: '心跳',
-        component: () => import('@/views/table/index'),
-        meta: { title: '心跳', icon: 'el-icon-cpu' }
+        meta: { title: 'Kafka数据', icon: 'el-icon-camera' }
       }
     ]
   },
